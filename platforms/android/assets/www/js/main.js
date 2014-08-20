@@ -209,64 +209,182 @@ function setAlpha(){
 }
 
 function memory() {
-	
+
 }
 
 //  ------ BASIC FUNCTION ---------
 function numeric(number){
-	if (val == '0') {
-		val = number;
-		display();
+	if (second_func) {
+		switch(number) {
+			case 0:
+			if (val == '0') {
+					val = '';
+				}
+				val +='10^';
+				display();
+				break;
+			case 1:
+				if (val == '0') {
+					val = '';
+				}
+				val +='log(';
+				display();
+				break;
+			case 2:
+				if (val == '0') {
+					val = '';
+				}
+				val +='ln(';
+				display();
+				break;
+			case 3:
+				val +='3';
+				display();
+				break;
+			case 4:
+				val +='!';
+				display();
+				break;
+			case 5:
+				val +='5';
+				display();
+				break;
+			case 6:
+				val +='6';
+				display();
+				break;
+			case 7:
+				if (val == '0') {
+					val = '';
+				}
+				val +='RANDOM';
+				display();
+				break;
+			case 8:
+				val +='8';
+				display();
+				break;
+			case 9:
+				val +='9';
+				display();
+				break;
+			}
+		secondFunc();
 	}
 	else {
-		switch(number) {
-		case 0:
-			val +='0';
-			display();
-			break;
-		case 1:
-			val +='1';
-			display();
-			break;
-		case 2:
-			val +='2';
-			display();
-			break;
-		case 3:
-			val +='3';
-			display();
-			break;
-		case 4:
-			val +='4';
-			display();
-			break;
-		case 5:
-			val +='5';
-			display();
-			break;
-		case 6:
-			val +='6';
-			display();
-			break;
-		case 7:
-			val +='7';
-			display();
-			break;
-		case 8:
-			val +='8';
-			display();
-			break;
-		case 9:
-			val +='9';
-			display();
-			break;
-		default:
-			break;
+		if (val == '0') {
+		val = number;
+		display();
 		}
+		else {
+			switch(number) {
+			case 0:
+				val +='0';
+				display();
+				break;
+			case 1:
+				val +='1';
+				display();
+				break;
+			case 2:
+				val +='2';
+				display();
+				break;
+			case 3:
+				val +='3';
+				display();
+				break;
+			case 4:
+				val +='4';
+				display();
+				break;
+			case 5:
+				val +='5';
+				display();
+				break;
+			case 6:
+				val +='6';
+				display();
+				break;
+			case 7:
+				val +='7';
+				display();
+				break;
+			case 8:
+				val +='8';
+				display();
+				break;
+			case 9:
+				val +='9';
+				display();
+				break;
+			default:
+				break;
+			}
 	}
+	}
+	
 }
 
 function basic(operation) {
+	if (second_func) {
+		switch(operation) {
+			case 0:
+				val +='0';
+				display();
+				break;
+			case 1:
+				if (val == '0') {
+					val = '';
+				}
+				val +='log(';
+				display();
+				break;
+			case 2:
+				if (val == '0') {
+					val = '';
+				}
+				val +='ln(';
+				display();
+				break;
+			case 3:
+				val +='3';
+				display();
+				break;
+			case 4:
+				val +='!';
+				display();
+				break;
+			case 5:
+				val +='5';
+				display();
+				break;
+			case 6:
+				if (val == '0') {
+					val = '';
+				}
+				val +='E^';
+				display();
+				break;
+			case 7:
+				if (val == '0') {
+					val = '';
+				}
+				val +='cbrt(';
+				display();
+				break;
+			case 8:
+				val +='8';
+				display();
+				break;
+			case 9:
+				val +='9';
+				display();
+				break;
+			}
+		secondFunc();
+	}
+	else {
 	switch(operation) {
 		case 0:
 			if (val == '0') {
@@ -313,6 +431,9 @@ function basic(operation) {
 				if (val.indexOf('┘') > -1) {
 					reduce();
 				}
+				else if (val.indexOf('!') > -1) {
+					factorial();
+				}
 				else 
 					val = math.eval(val);
 				break;
@@ -326,12 +447,16 @@ function basic(operation) {
 			val = 'Error 1';
 			display();
 		}
+	}
 }
 
 function replace() {
 	console.log(val);
 	val = val.replace("π", "pi");
 	val = val.replace("√(", "sqrt(");
+	val = val.replace("RANDOM", "random()");
+	val = val.replace("log(", "log10(")
+	val = val.replace("ln(", "log(");
 	
 	if (val == "Exp") {
 		val = val.replace("Exp", "1");
@@ -369,8 +494,12 @@ function reduce(){
   	}
   }
 
-  	
+}
 
+
+function factorial() { 
+	n = val.substring(0, val.indexOf("!"));
+	val = factorial(n) + val.substring(val.indexOf("!") + 1, val.length); 
 }
 
 function display(){

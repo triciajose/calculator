@@ -39,6 +39,14 @@
 	width: 100px !important;
 }
 
+.thin {
+	height: 12px !important;
+}
+
+.bar {
+	height: 40px !important;
+}
+
 .text{
 	font-size: 10px !important;
 	color: orange;
