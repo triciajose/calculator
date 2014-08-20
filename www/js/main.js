@@ -496,6 +496,15 @@ function reduce(){
 
 }
 
+function toRadians(degrees) {
+	return degrees * (pi/180);
+}
+
+function toDegrees(radians) {
+	return radians * (180/pi);
+}
+
+
 
 function factorial() { 
 	n = val.substring(0, val.indexOf("!"));
