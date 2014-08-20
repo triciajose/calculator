@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" >
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SHARP Calculator</title>
+
+  <!-- If you are using the CSS version, only link these 2 files, you may add app.css to use for your overrides if you like -->
+  <link rel="stylesheet" href="foundation-5.3.3/css/normalize.css">
+  <link rel="stylesheet" href="foundation-5.3.3/css/foundation.css">
+  <link rel="stylesheet" href="css/main.css">
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="jquery.calculator.package-2.0.1/jquery.calculator.css"> 
+	<script type="text/javascript" src="jquery.calculator.package-2.0.1/jquery.plugin.js"></script> 
+	<script type="text/javascript" src="jquery.calculator.package-2.0.1/jquery.calculator.js"></script>
+	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/mathjs/0.26.0/math.min.js"></script>
+
+
+  <!-- If you are using the gem version, you need this only -->
+<!--   <link rel="stylesheet" href="foundation-5.3.3/css/app.css">
+ -->
+  <script src="foundation-5.3.3/js/vendor/modernizr.js"></script>
+
+</head>
+<body>
+  <script src="foundation-5.3.3/js/vendor/jquery.js"></script>
+  <script src="foundation-5.3.3/js/foundation.min.js"></script>
+  <script src="js/main.js"></script>
+  
+  <script>
+    $(document).foundation();
+    var value = '';
+  </script>    
+  <!-- <nav class="top-bar" data-topbar>
+    <ul class="title-area">
+       
+      <li class="name">
+        <h1>
+          <a href="#">
+            SHARP Calculator
+          </a>
+        </h1>
+      </li>
+    </ul>
+  </nav>
+    -->
+<div class="gray"> SHARP Calculator </a>
+<form name="calculator" >
+	<!-- <div class="row"> -->
+		<div class="small-2 columns">
+			<input type="text" class="tiny" name="secf" value="" readonly/>
+		</div>
+		<div class="small-2 columns">
+			<input type="text" class="tiny" name="hyp" value="" readonly/>
+		</div>
+		<div class="small-2 columns">
+			<input type="text" class="tiny" name="RCL" value="" readonly/>
+		</div>
+		<div class="small-2 columns">
+			<input type="text" class="tiny" name="modes" value="DEG" readonly/>
+		</div>
+		<div class="small-2 columns">
+			<input type="text" class="tiny readlast" name="mem" value="M" readonly/>
+		</div>
+		<div class="small-12 columns">
+	        <input type="text" class="read" name="ans" value="0" maxlength="159" readonly/>
+	    </div>
+	<div class="row">
+		<div class="small-2 columns text invisible">.</div>
+		<div class="small-2 columns text"> MODE	</div>
+		<div class="small-2 columns text"> FSE	</div>
+		<div class="small-2 columns text"> TAB	</div>
+		<div class="small-1 columns text">	CA </div>
+		<div class="small-2 columns text invisible">	.</div>
+
+	</div>
+	<div class="row">
+	<div class="small-12 columns">
+			<!-- <div class="text"> MODE FSE TAB CA</div> -->
+			<span>
+		        <input type="button" class="six" value="2ndF" onClick="secondFunc()">
+		    </span>
+
+		    <span>
+		        <input type="button" class="six" value="DRG" onClick="changeMode()">
+		    </span>
+
+			<span>
+		        <input type="button" class="six" value="<" onClick="leftCursor()">
+		    </span>
+
+			<span>
+		        <input type="button" class="six" value=">" onClick="rightCursor()">
+		    </span>
+
+			<span>
+		        <input type="button" class="six" value="DEL" onClick="deleteValue()">
+		    </span>
+
+		    <span>
+		        <input type="button" class="six" value="C" onClick="clearCalc()">
+		    </span>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="small-2 columns text ">archyp</div>
+		<div class="small-2 columns text"> arcsin	</div>
+		<div class="small-2 columns text"> arcos	</div>
+		<div class="small-2 columns text"> arctan	</div>
+		<div class="small-2 columns text">	√ </div>
+		<div class="small-2 columns text"> x√ </div>
+
+	</div>
+
+	<div class="row">
+		<div class="small-12 columns">
+			<span>
+		        <input type="button" class="six" value="hyp" onClick="hype()">
+		    </span>
+
+		    <span>
+		        <input type="button" class="six" value="sin" onClick="advanced(0)">
+		    </span>
+
+		    <span>
+		        <input type="button" class="six" value="cos" onClick="advanced(1)">
+		    </span>
+
+		    <span>
+		        <input type="button" class="six" value="tan" onClick="advanced(2)">
+		    </span>
+
+		    <span>
+		        <input type="button" class="six" value="π" onClick="advanced(3)">
+		    </span>
+
+		    <span>
+		        <input type="button" class="six" value="y^x" onClick="advanced(4)">
+		    </span>
+	    </div>
+
+	</div>
+
+	<div class="row">
+		<div class="small-2 columns text ">x^2</div>
+		<div class="small-2 columns text"> d/c	</div>
+		<div class="small-2 columns text"> <>DEG	</div>
+		<div class="small-2 columns text"> ALPHA	</div>
+		<div class="small-2 columns text">	, </div>
+		<div class="small-2 columns text"> M- </div>
+
+	</div>
+	<div class="row">
+		<div class="small-12 columns">
+			<span>
+		        <input type="button" class="six" value="Exp" onClick="advanced(5)">
+		    </span>
+
+		    <span>
+		        <input type="button" class="six" value="a b/c" onClick="advanced(6)">
+		    </span>
+
+		    <span>
+		        <input type="button" class="six" value="D°M'S" onClick="advanced(7)">
+		    </span>
+
+		    <span>
+		        <input type="button" class="six" value="RCL" onClick="setAlpha()">
+		    </span>
+
+		    <span>
+		        <input type="button" class="six" value="STO" onClick="advanced(8)">
+		    </span>
+
+		    <span>
+		        <input type="button" class="six" value="M+" onClick="memory()">
+		    </span>
+	    </div>
+	 </div>
+	 <div class="row">
+		<div class="small-3 columns text ">RANDOM</div>
+		<div class="small-2 columns text"> ->rθ	</div>
+		<div class="small-2 columns text"> ->xy	</div>
+		<div class="small-2 columns text"> x^-1	<a class="gray">x̄</a></div>
+		<div class="small-2 columns gray"> n</div>
+<!-- 		<div class="small-1 columns gray"> n</div>
+ -->
+	</div>
+	<div class="row">
+
+		<div class="small-12 columns">
+			<span>
+		        <input type="button" class="five" value="7" onClick="numeric(7)">
+		    </span>
+
+		    <span>
+		        <input type="button" class="five" value="8" onClick="numeric(8)">
+		    </span>
+
+			<span>
+		        <input type="button" class="five" value="9" onClick="numeric(9)">
+		    </span>
+
+			<span>
+		        <input type="button" class="five" value="(" onClick="basic(0)">
+		    </span>
+
+			<span>
+		        <input type="button" class="five" value=")" onClick="basic(1)">
+		    </span>
+	    </div>
+
+	</div>
+
+	<div class="row">
+		<div class="small-3 columns text ">n!</div>
+		<div class="small-2 columns text"> nCr	</div>
+		<div class="small-2 columns text"> nPr	</div>
+		<div class="small-2 columns gray"> sx	</div>
+		<div class="small-2 columns gray"> σx</div>
+		<div class="small-1 columns invisible"> .</div>
+
+	</div>
+	<div class="row">
+		<div class="small-12 columns">
+
+			<span>
+		        <input type="button" class="five" value="4" onClick="numeric(4)">
+		    </span>
+
+		    <span>
+		        <input type="button" class="five" value="5" onClick="numeric(5)">
+		    </span>
+
+		    <span>
+		        <input type="button" class="five" value="6" onClick="numeric(6)">
+		    </span>
+
+		    <span>
+		        <input type="button" class="five" value="X" onClick="basic(4)">
+		    </span>
+
+		    <span>
+		        <input type="button" class="five" value="/" onClick="basic(5)">
+		    </span>
+	    </div>
+
+	</div>
+	<div class="row">
+		<div class="small-3 columns text ">log</div>
+		<div class="small-2 columns text"> ln	</div>
+		<div class="small-2 columns text"> DRG>	</div>
+		<div class="small-2 columns gray"> Σx	</div>
+		<div class="small-2 columns gray"> Σx^2</div>
+		<div class="small-1 columns invisible"> .</div>
+
+	</div>
+
+	<div class="row">
+		<div class="small-12 columns">
+
+			<span>
+		        <input type="button" class="five" value="1" onClick="numeric(1)">
+		    </span>
+
+		    <span>
+		        <input type="button" class="five" value="2" onClick="numeric(2)">
+		    </span>
+
+		    <span>
+		        <input type="button" class="five" value="3" onClick="numeric(3)">
+		    </span>
+
+		    <span>
+		        <input type="button" class="five" value="+" onClick="basic(2)">
+		    </span>
+
+		    <span>
+		        <input type="button" class="five" value="-" onClick="basic(3)">
+		    </span>
+	    </div>
+
+	</div>
+
+	<div class="row">
+		<div class="small-3 columns text ">10^x</div>
+		<div class="small-2 columns text"> e^x	</div>
+		<div class="small-2 columns text"> 3√	</div>
+		<div class="small-2 columns text"> <--,-->	</div>
+		<div class="small-2 columns text"> %</div>
+		<div class="small-1 columns invisible"> .</div>
+
+	</div>
+
+	<div class="row">
+		<div class="small-12 columns">
+
+			<span>
+		        <input type="button" class="five" value="0" onClick="numeric(0)">
+		    </span>
+
+		    <span>
+		        <input type="button" class="five" value="." onClick="basic(6)">
+		    </span>
+
+		    <span>
+		        <input type="button" class="five" value="(-)" onClick="basic(7)">
+		    </span>
+
+		    <span>
+		        <input type="button" class="five" value="ANS" onClick="basic(8)">
+		    </span>
+
+		    <span>
+		        <input type="button" class="five" value="=" onClick="basic(9)">
+		    </span>
+	    </div>
+
+	</div>
+
+<!-- <input type="textfield" name="ans" value=""> -->
+<br><!-- 
+<input type="button" class="five" value="1" onClick="document.calculator.ans.value+='1'">
+<input type="button" class="five" value="2" onClick="document.calculator.ans.value+='2'">
+<input type="button" class="five" value="3" onClick="document.calculator.ans.value+='3'">
+<input type="button" class="five" value="+" onClick="document.calculator.ans.value+='+'">
+<br>
+<input type="button" class="five" value="4" onClick="document.calculator.ans.value+='4'">
+<input type="button" class="five" value="5" onClick="document.calculator.ans.value+='5'">
+<input type="button" class="five" value="6" onClick="document.calculator.ans.value+='6'">
+<input type="button" class="five" value="-" onClick="document.calculator.ans.value+='-'">
+<br>
+<input type="button" class="five" value="7" onClick="document.calculator.ans.value+='7'">
+<input type="button" class="five" value="8" onClick="document.calculator.ans.value+='8'">
+<input type="button" class="five" value="9" onClick="document.calculator.ans.value+='9'">
+<input type="button" class="five" value="*" onClick="document.calculator.ans.value+='*'">
+<input type="button" class="five" value="/" onClick="document.calculator.ans.value+='/'">
+<br>
+<input type="button" class="five" value="0" onClick="document.calculator.ans.value+='0'">
+<input type="reset" value="Reset">
+<input type="button" class="five" value="=" onClick="document.calculator.ans.value=eval(document.calculator.ans.value)"> -->
+</form>
+</body>
+</html>
